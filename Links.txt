@@ -1,0 +1,3 @@
+https://whalecoders.com/tutorial/laravel/laravel-8-tag-system-tutorial-with-example
+
+https://laravel.sillo.org/les-categories/
