@@ -6,7 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
-{
+{   
+    
+    public function __construct()
+    {   
+        //show if not signed in
+        $this->middleware(['guest']);
+    }
     public function index(){
        
         return view('auth.login');

@@ -8,6 +8,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        //show if not signed in
+        $this->middleware(['guest']);
+    }
     public function index(){
         return view('auth.register');
     }
