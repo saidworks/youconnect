@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LogoutController;
-
+use App\Http\Controllers\PostController;
 //home page
 Route::get('/',function(){
    return view('home');
@@ -12,6 +12,7 @@ Route::get('/',function(){
 //Dashboard 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
+//Auth
 //register
 Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::post('/register',[RegisterController::class,'store']);
@@ -21,6 +22,6 @@ Route::post('/login',[LoginController::class,'store']);
 //logout
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
-Route::get('/posts', function () {
-   return view('posts.index');
-});
+//Posts
+Route::get('/posts',[PostController::class,'index'])->name('posts');
+Route::post('/posts',[PostController::class,'store']);
