@@ -8,15 +8,15 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        return view('posts.index');
+        //$posts = Post::get(); // return all posts as laravel collection
+        $posts = Post::paginate(2);
+        return view('posts.index', ['posts' => $posts]);
     }
     public function store(Request $request){
         $this->validate($request,[
             'body' => 'required'
         ]);
-        Post::create([
-            'user-id' => auth()->user()->id,
-            'body' => $request->body
-        ]);
+        $request->user()->posts()->create($request->only('body'));
+        return back();
     }
 }
