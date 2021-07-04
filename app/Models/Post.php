@@ -12,6 +12,10 @@ class Post extends Model
         'body',
         'user_id'
     ];
+    public function likedBy(User $user){
+        //dd($this->likes);
+        return $this->likes->contains('user_id',$user->id); // collection
+    }
     public function user(){
         return $this->belongsTo(User::class);
     }
