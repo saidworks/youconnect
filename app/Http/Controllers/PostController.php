@@ -7,9 +7,13 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
     public function index(){
         //$posts = Post::get(); // return all posts as laravel collection
-        $posts = Post::paginate(2);
+        $posts = Post::paginate(20);
         return view('posts.index', ['posts' => $posts]);
     }
     public function store(Request $request){
