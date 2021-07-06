@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+
 class DashboardController extends Controller
 {
     public function __construct()
@@ -16,6 +17,7 @@ class DashboardController extends Controller
         //dd(auth()->user());
         //dd(auth()->user()->posts); // to return posts of authenticated user as a laravel collection
         //dd(Post::find(3)->created_at);
+        $user = auth()->user();
         return view('dashboard');
     }
 }
