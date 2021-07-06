@@ -17,11 +17,11 @@ class PostLikeController extends Controller
     //         'post_id' => 'required',
     //     ]);
     //    $request->user()->post->likes()->create($request->only('post_id'));
-    if(!$post->likedBy($request->user())){;
-        $post->likes()->create([
+        if(!$post->likedBy($request->user())){;
+            $post->likes()->create([
             'user_id' => $request->user()->id,
-        ]);
-        }
+            ]);
+            }
         return back();
     }
     public function destroy(Post $post,Request $request){

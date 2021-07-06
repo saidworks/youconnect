@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Like;
+use App\Models\User;
+
 class Post extends Model
 {
     use HasFactory;
@@ -14,8 +16,9 @@ class Post extends Model
     ];
     public function likedBy(User $user){
         //dd($this->likes);
-        return $this->likes->contains('user_id',$user->id); // collection
+         return $this->likes->contains('user_id',$user->id); // collection
     }
+   
     public function user(){
         return $this->belongsTo(User::class);
     }
