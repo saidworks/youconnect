@@ -30,7 +30,8 @@
         @endif 
         <span class="text-gray-600 text-sm">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
         @endauth
-        <a class='font-bold' href="{{ route('posts.show', $post) }}"> show</a>
+        <a class='font-bold pl-1' href="{{ route('posts.show', $post) }}"> show</a>
+        <a class='font-bold pl-1' href="{{ route('posts.edit', $post) }}"> edit </a>
     </div>
     
 </div>

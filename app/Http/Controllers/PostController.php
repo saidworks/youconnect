@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth'])->only('store','destroy');
+        $this->middleware(['auth'])->only('store','destroy','edit');
     }
     public function index(){
         //$posts = Post::get(); // return all posts as laravel collection
@@ -36,6 +36,19 @@ class PostController extends Controller
         $post->delete();
         return back();
     }
-
+    public function edit(Post $post){
+        return view("posts.edit",['post'=>$post]);
+        
+    }
+    public function update(Request $request,Post $post){
+        $this->validate($request,[
+            'body' => 'required'
+        ]);
+        // $request->user()->posts()->update($request->only('body'));
+        $post->update([
+            'body' => $request->body,
+        ]);
+        return redirect('posts');
+    }
 
 }

@@ -31,7 +31,8 @@ Route::get('/posts',[PostController::class,'index'])->name('posts');
 Route::post('/posts',[PostController::class,'store']);
 Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy');
 Route::get('/posts/{post}',[PostController::class,'show'])->name('posts.show');
-
+Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('posts.edit');
+Route::put('/posts/{post}/update',[PostController::class,'update'])->name('posts.update');
 //Likes
 // we use model binding as we hint to the post {post}
 Route::post('/posts/{post}/likes',[PostLikeController::class,'store'])->name('posts.likes');
