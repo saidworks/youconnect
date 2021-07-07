@@ -19,13 +19,17 @@ class PostLikeController extends Controller
     //         'post_id' => 'required',
     //     ]);
     //    $request->user()->post->likes()->create($request->only('post_id'));
-        if(!$post->likedBy($request->user())){;
-            $post->likes()->create([
-            'user_id' => $request->user()->id,
-            ]);
-            }
-        Mail::to($post->user)->send(new PostLiked(auth()->user(),$post));
-        return back();
+        
+            if(!$post->likedBy($request->user())){
+                $post->likes()->create([
+                'user_id' => $request->user()->id,
+                ]);
+            // onlyTrashed check for soft deleted records
+            if($post->likes()->onlyTrashed()->where('user_id',$request->user()->id)->count()){
+            Mail::to($post->user)->send(new PostLiked(auth()->user(),$post));
+            return back();
+                }
+        }
     }
     public function destroy(Post $post,Request $request){
             //dd($post);
