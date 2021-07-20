@@ -4,6 +4,7 @@
         <div class="w-6/12 bg-white p-6 mt-6 rounded-lg">
            <h1 class="mb-4 mt-4 text-center text-3xl">Login</h1> 
            @if(session('status'))
+           {{-- in case of bad login it return an error message --}}
                 <div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
                     {{ session('status') }}
                 </div>
